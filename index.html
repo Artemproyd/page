@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
-    <h1>Head</h1>
-    <button><iframe src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=bA0tZQGdPFs.231104&" width="330" height="50" frameborder="0" allowtransparency="true" scrolling="no"></iframe></button>​
+    <select id="combo1" onchange="FlipOtherCombo(this, 'combo2')">
+    <option value="yes">yes</option>
+    <option value="no">no</option>
+    </select>
+    <select id="combo2" onchange="FlipOtherCombo(this, 'combo1')">
+        <option value="yes">yes</option>
+        <option selected="selected" value="no">no</option>
+    </select>
+
+    <script>
+        function FlipOtherCombo(objCombo, strOtherComboId){
+            if (objCombo.value ==="yes"){
+                document.getElementById(strOtherComboId).value = "no";
+            } else {
+                document.getElementById(strOtherComboId).value = "yes";
+            }
+        }
+    </script>
+
 </body>
 </html>
