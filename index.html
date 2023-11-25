@@ -8,31 +8,39 @@
 
 </head>
 <body>
-    <select id="someid">
-    <option value="yes">yes</option>
-    <option value="no">no</option>
+    <select id="someid" onchange="f.call()">
     </select>
-    <select id="combo2">
-        <option value="yes">yes</option>
-        <option selected="selected" value="no">no</option>
-    </select>
-
     <script>
-            myArray = [[1,2,3],
-                       [2,3,5],
-                       [1,4,5]];
-
+            let a = [1, 0, 0, 0, 1];
             let s = document.getElementById('someid');
-            let words = ["one", "two", "three", "four", "five"];
+            let words = ["Индивидуальная тренировочная программа",
+                        "Комплексы на определенные группу мышц (спины, ног, рук, шеи)",
+                        "Релакс программа",
+                        "Мотивационная программу",
+                        "Психологическая программа"];
 
-            for(let i = 0; i < myArray[0].length; i++){
-               let t = document.createElement("option")
-               t.value = myArray[0][i];
-               t.textContent = words[myArray[0][i]-1];
-               s.appendChild(t)
+            for(let i = 0; i < a.length; ++i){
+               // t.value = myArray[0][i];
+                if(a[i] === 1) {
+                    let t = document.createElement("option")
+                    t.textContent = words[i];
+                    s.appendChild(t)
+                }
+            }
+            function f() {
+                let d = document.getElementById('111');
+                console.log(s.value);
+                if(s.value == "Индивидуальная тренировочная программа"){
+                    d.innerHTML += 'Extra stuff';
+                }
             }
 
     </script>
 
+    <div id = "111">
+
+    </div>
+
 </body>
+
 </html>
