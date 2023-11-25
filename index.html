@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://raubaca.neocities.org/codepen/base.css'><link rel="stylesheet" href="./1.css">
 
 </head>
 <body>
-    <select id="combo1" onchange="FlipOtherCombo(this, 'combo2')">
+    <select id="someid">
     <option value="yes">yes</option>
     <option value="no">no</option>
     </select>
-    <select id="combo2" onchange="FlipOtherCombo(this, 'combo1')">
+    <select id="combo2">
         <option value="yes">yes</option>
         <option selected="selected" value="no">no</option>
     </select>
 
     <script>
-        function FlipOtherCombo(objCombo, strOtherComboId){
-            if (objCombo.value ==="yes"){
-                document.getElementById(strOtherComboId).value = "no";
-            } else {
-                document.getElementById(strOtherComboId).value = "yes";
+            myArray = [[1,2,3],
+                       [2,3,5],
+                       [1,4,5]];
+
+            let s = document.getElementById('someid');
+            let words = ["one", "two", "three", "four", "five"];
+
+            for(let i = 0; i < myArray[0].length; i++){
+               let t = document.createElement("option")
+               t.value = myArray[0][i];
+               t.textContent = words[myArray[0][i]-1];
+               s.appendChild(t)
             }
-        }
+
     </script>
 
 </body>
