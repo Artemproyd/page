@@ -4,38 +4,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel='stylesheet' href='https://raubaca.neocities.org/codepen/base.css'><link rel="stylesheet" href="./1.css">
-
+<!--    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />-->
+<!--    <script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
 </head>
 <body>
     <select id="someid" onchange="f.call()">
     </select>
     <script>
-            let a = [1, 0, 0, 0, 1];
-            let s = document.getElementById('someid');
-            let words = ["Индивидуальная тренировочная программа",
-                        "Комплексы на определенные группу мышц (спины, ног, рук, шеи)",
-                        "Релакс программа",
-                        "Мотивационная программу",
-                        "Психологическая программа"];
+        let tg = window.Telegram.WebApp;
+        let a = [1, 0, 0, 0, 1];
+        let s = document.getElementById('someid');
+        let words = ["Индивидуальная тренировочная программа",
+                    "Комплексы на определенные группу мышц (спины, ног, рук, шеи)",
+                    "Релакс программа",
+                    "Мотивационная программу",
+                    "Психологическая программа"];
 
-            for(let i = 0; i < a.length; ++i){
-               // t.value = myArray[0][i];
-                if(a[i] === 1) {
-                    let t = document.createElement("option")
-                    t.textContent = words[i];
-                    s.appendChild(t)
-                }
+        for(let i = 0; i < a.length; ++i){
+           // t.value = myArray[0][i];
+            if(a[i] === 1) {
+                let t = document.createElement("option")
+                t.textContent = words[i];
+                s.appendChild(t)
             }
-            function f() {
-                let d = document.getElementById('111');
-                console.log(s.value);
-                if(s.value == "Индивидуальная тренировочная программа"){
-                    d.innerHTML += 'Extra stuff';
-                }
+        }
+        function f() {
+            let d = document.getElementById('111');
+            if(s.value == "Индивидуальная тренировочная программа"){
+
+                d.innerHTML += str(tg.InitDataUnsefe.id);
             }
+        }
 
     </script>
+
+<!--    <py-script>-->
+<!--        print("Let's compute π:")-->
+<!--        def compute_pi(n):-->
+<!--          pi = 2-->
+<!--          for i in range(1,n):-->
+<!--            pi *= 4 * i ** 2 / (4 * i ** 2 - 1)-->
+<!--          return pi-->
+
+<!--        pi = compute_pi(100000)-->
+<!--        s = f"π is approximately {pi:.3f}"-->
+<!--        print(s)-->
+<!--    </py-script>-->
 
     <div id = "111">
 
