@@ -14,7 +14,7 @@
     </select>
     <script>
         let tg = window.Telegram.WebApp;
-        let a = [1, 1, 1, 0, 1];
+        let a = [1, 1, 1, 1, 1];
         let s = document.getElementById('someid');
         let words = ["Индивидуальная тренировочная программа",
                     "Комплексы на определенные группу мышц (спины, ног, рук, шеи)",
@@ -32,14 +32,16 @@
         }
         function f() {
             let d = document.getElementById('111');
+
+            st = str()
             if(s.value == "Индивидуальная тренировочная программа"){
-
                 console.log(tg.initDataUnsafe.user.first_name)
-                d.innerHTML = str(tg.initDataUnsafe.user.first_name);
                 console.log(tg.initDataUnsafe.user.id)
-                d.innerHTML = str(tg.initDataUnsafe.user.id);
-
+                st = str(tg.initDataUnsafe.user.first_name) + ' ' + str(tg.initDataUnsafe.user.id);
+                let content = document.createTextNode(st)
+                d.appendChild(content)
             }
+
         }
 
     </script>
