@@ -33,13 +33,13 @@
         function f() {
             let d = document.getElementById('111');
 
-            st = str()
+            let st;
             if(s.value == "Индивидуальная тренировочная программа"){
-                console.log(tg.initDataUnsafe.user.first_name)
-                console.log(tg.initDataUnsafe.user.id)
-                st = str(tg.initDataUnsafe.user.first_name) + ' ' + str(tg.initDataUnsafe.user.id);
-                let content = document.createTextNode(st)
-                d.appendChild(content)
+                console.log(tg.initDataUnsafe.user.first_name);
+                console.log(tg.initDataUnsafe.user.id);
+                st = tg.initDataUnsafe.user.first_name + ' ' + tg.initDataUnsafe.user.id;
+                let content = document.createTextNode(st);
+                d.innerHTML += st;
             }
 
         }
