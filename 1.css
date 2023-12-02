@@ -42,6 +42,11 @@ th, td {
   padding:6px;
   margin-left: 20px;
 }
+
+h2 {
+  margin-left: 100px;
+}
+
 #calendar {
   width: 100%;
   line-height: 1.2em;
