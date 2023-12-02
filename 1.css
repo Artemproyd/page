@@ -31,6 +31,8 @@ table {
     border-collapse: collapse;
     background: white;
     color: black;
+    width: 200px;
+    height: 200px;
 }
 th, td {
     font-weight: bold;
