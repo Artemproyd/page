@@ -31,8 +31,6 @@ table {
     border-collapse: collapse;
     background: white;
     color: black;
-    width: 100px;
-    height: 100px;
 }
 th, td {
     font-weight: bold;
@@ -42,7 +40,7 @@ th, td {
   width:220px;
   border:1px solid #c0c0c0;
   padding:6px;
-  margin: 0 auto;
+  margin-left: 20px;
 }
 #calendar {
   width: 100%;
