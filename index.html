@@ -20,102 +20,63 @@
     </h2>
     <br />
 
-    <table bgcolor="lightgrey" align="center"
-        cellspacing="5" cellpadding="5">
 
-        <!-- The tr tag is used to enter
-            rows in the table -->
-
-        <!-- It is used to give the heading to the
-            table. We can give the heading to the
-            top and bottom of the table -->
-
-        <caption align="top">
-            <!-- Here we have used the attribute
-                that is style and we have colored
-                the sentence to make it better
-                depending on the web page-->
-        </caption>
-
-        <!-- Here th stands for the heading of the
-            table that comes in the first row-->
-
-        <!-- The text in this table header tag will
-            appear as bold and is center aligned-->
-
-        <thead>
+    <div class="look-calendar">
+        <table id="calendar">
+            <thead>
             <tr>
-                <!-- Here we have applied inline style
-                     to make it more attractive-->
-                <th>Sun</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>sat</th>
-            </tr>
-        </thead>
+            <td><b>‹</b>
+            <td colspan="5">
+            <td><b>›</b>
+            <tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-            </tr>
-            <tr>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td>31</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <script>
+        function calendar(id, year, month) {
+            var Dlast = new Date(year, month + 1, 0).getDate(),
+            D = new Date(year, month, Dlast),
+            DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
+            DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(),
+            calendar = '<tr>',
+            month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+            if (DNfirst != 0) {
+                for (var i = 1; i < DNfirst; i++) calendar += '<td>';
+            } else {
+                for (var i = 0; i < 6; i++) calendar += '<td>';
+            }
+            for (var i = 1; i <= Dlast; i++) {
+                if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                    calendar += '<td class="today">' + i;
+                } else {
+                    calendar += '<td>' + i;
+                }
+                if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
+                    calendar += '<tr>';
+                }
+            }
+            for (var i = DNlast; i < 7; i++) calendar += '<td> ';
+                document.querySelector('#' + id + ' tbody').innerHTML = calendar;
+                document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + ' ' + D.getFullYear();
+                document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
+                document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
+            if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) {
+            // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+                document.querySelector('#' + id + ' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
+            }
+        }
+            calendar("calendar", new Date().getFullYear(), new Date().getMonth());
+            // переключатель минус месяц
+            document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+            calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) - 1);
+            }
+            // переключатель плюс месяц
+            document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+            calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) + 1);
+        }
+    </script>
 
 
     <script>
@@ -144,7 +105,6 @@
             let d = document.getElementById('111');
 
             if(s.value == "Индивидуальная тренировочная программа"){
-                console.log(tg.initData)
                 console.log(tg.initDataUnsafe.user.first_name);
                 console.log(tg.initDataUnsafe.user.id);
                 let st = tg.initDataUnsafe.user.first_name + ' ' + tg.initDataUnsafe.user.id;
