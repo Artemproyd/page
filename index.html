@@ -14,12 +14,9 @@
 
     <select id="someid" onchange="f.call()">
     </select>
-
-    <h2 align="center" style="color: orange;">
-        January 2021
-    </h2>
     <br />
 
+    <button id="btn" class="button">Show/Hide Main Button</button>
 
     <div class="look-calendar">
         <table id="calendar">
@@ -35,6 +32,9 @@
     </div>
 
     <script>
+
+
+
         function calendar(id, year, month) {
             var Dlast = new Date(year, month + 1, 0).getDate(),
             D = new Date(year, month, Dlast),
@@ -47,11 +47,31 @@
             } else {
                 for (var i = 0; i < 6; i++) calendar += '<td>';
             }
+
+            day_mas = [1, 5, 9, 28, 29, 45, 46];
             for (var i = 1; i <= Dlast; i++) {
-                if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                if (i === new Date().getDate() && D.getFullYear() === new Date().getFullYear() && D.getMonth() === new Date().getMonth()) {
                     calendar += '<td class="today">' + i;
                 } else {
-                    calendar += '<td>' + i;
+                    let c = false;
+                    for(let j = 0; j < day_mas.length; j++) {
+                        let day = (new Date().getDate() + day_mas[j]) % Dlast;
+                        let mon = Math.floor((new Date().getDate() + day_mas[j]) / Dlast);
+                        if((new Date().getDate() + day_mas[j]) === Dlast) {
+                            day = Dlast;
+                            mon = 0;
+                        }
+                        let nmon = Math.floor((new Date().getMonth() + mon) % 12);
+                        let yea = Math.floor((new Date().getMonth() + mon) / 12);
+                        if (day === i && D.getMonth() === nmon && D.getFullYear() === (new Date().getFullYear() + yea)) {
+                            c = true;
+                            break;
+                        }
+                    }
+                    if(c)
+                        calendar += '<td class="today">' + i;
+                    else
+                        calendar += '<td>' + i;
                 }
                 if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
                     calendar += '<tr>';
@@ -81,7 +101,11 @@
 
     <script>
 
-
+        let btnED = document.getElementById("btn"); //получаем кнопку активировать/деактивировать
+        btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
+            let tg = window.Telegram.WebApp;
+            tg.sendData("some string that we need to send");
+        });
 
         let tg = window.Telegram.WebApp;
         let a = [1, 1, 1, 0, 1];
@@ -115,7 +139,7 @@
         }
 
     </script>
-    
+
     <div id = "111">
 
     </div>
