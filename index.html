@@ -102,12 +102,11 @@
     <script>
 
         let btnED = document.getElementById("btn"); //получаем кнопку активировать/деактивировать
+        let tg = window.Telegram.WebApp;
         btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
             let tg = window.Telegram.WebApp;
             tg.sendData("some string that we need to send");
         });
-
-        let tg = window.Telegram.WebApp;
         let a = [1, 1, 1, 0, 1];
         let s = document.getElementById('someid');
         let words = ["Индивидуальная тренировочная программа",
