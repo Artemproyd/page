@@ -100,12 +100,13 @@
 
 
     <script>
+        let tg = window.Telegram.WebApp;
+        function but(){
+            let data = "fff";
+            tg.sendData(JSON.stringify(data));
+        }
 
-        let btnED = document.getElementById("btn"); //получаем кнопку активировать/деактивировать
-        Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            tg.sendData("some string that we need to send");
-            //при клике на основную кнопку отправляем данные в строковом виде
-        });
+        document.getElementById("btn").onclick = but();
         let a = [1, 1, 1, 0, 1];
         let s = document.getElementById('someid');
         let words = ["Индивидуальная тренировочная программа",
@@ -127,6 +128,7 @@
             let d = document.getElementById('111');
 
             if(s.value == "Индивидуальная тренировочная программа"){
+
                 console.log(tg.initDataUnsafe.user.first_name);
                 console.log(tg.initDataUnsafe.user.id);
                 let st = tg.initDataUnsafe.user.first_name + ' ' + tg.initDataUnsafe.user.id;
