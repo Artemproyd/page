@@ -96,7 +96,8 @@
 
 
     <script>
-        let bn = document.getElementById("btn")
+        let tg = window.Telegram.WebApp;
+        let bn = document.getElementById("btn");
         bn.onclick = function but(){
             let data = "fff";
             tg.sendData(JSON.stringify(data));
