@@ -28,7 +28,7 @@
             <tbody></tbody>
         </table>
     </div>
-    <button id="btn" class="button" onclick="but()">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
+    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
     <script>
 
         function calendar(id, year, month) {
@@ -97,7 +97,8 @@
 
     <script>
         let tg = window.Telegram.WebApp;
-        function but(){
+        let bn = document.getElementById("btn")
+        bn.onclick = function but(){
             let data = "sss";
             tg.sendData(JSON.stringify(data));
         }
