@@ -31,7 +31,7 @@
 
     <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
     <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-    <button id="btnED" class="button">Enable/Disable Main Button</button>
+    <button id="btnED" onclick="but()" class="button">Enable/Disable Main Button</button>
 
     <script>
 
@@ -105,8 +105,7 @@
             let data = "fff";
             tg.sendData(JSON.stringify(data));
         }
-
-        document.getElementById("btn").onclick = but();
+        
         let a = [1, 1, 1, 0, 1];
         let s = document.getElementById('someid');
         let words = ["Индивидуальная тренировочная программа",
